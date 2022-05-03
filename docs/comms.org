@@ -14,7 +14,7 @@ With regards to DCL platform alone (that is, without third-party servers), users
 * Handshake
 
 - The BFF acts as the entry point to the comms services. Users authenticate against this service using their addresses.
-- Archipelago receives (thought the BFF) a heartbeat with the current peer position and sends =change_island= messages. This message will notify the kernel that the user has to join or change to a specific island, the message will contain a connection string that the kernel will use to connect to one of the transports defined above. This way Archipelago is in charge of telling the kernel which transport will be used.
+- Archipelago receives (thought the BFF) a heartbeat with the current peer position and sends =island_changed= messages. This message will notify the kernel that the user has to join or change to a specific island, the message will contain a connection string that the kernel will use to connect to one of the transports defined above. This way Archipelago is in charge of telling the kernel which transport will be used.
 - The BFF and Archipelago are connected as part of a [[https://nats.io/][NATS]] cluster, sending and receiving peer events.
 
 #+begin_src plantuml :file comms-v3-overview.png 
@@ -36,7 +36,7 @@ BFF->K: Validation OK message
 K->BFF: Heartbeat (includes position)
 BFF->A: NATS: peer.<id>.heartbeat
 
-A->BFF: NATS: peer.<id>.change_island \n(includes connection string to connect to a transport)
+A->BFF: NATS: peer.<id>.island_changed \n(includes connection string to connect to a transport)
 BFF->K: change island message \n(includes connection string to connect a transport)
 
 K->Transport: Connect using connection string
@@ -161,9 +161,9 @@ Archipelago should be able to register transport nodes and be able to balance is
   note right: contains data for generating access tokens, max peers, etc
 
   K->a: hearbeat
-  a->K: change_island, since the island is around a plaza, use transport p2p
+  a->K: island_changed, since the island is around a plaza, use transport p2p
   K->a: hearbeat
-  a->K: change_island, since the island is around the casino, use transport livekit
+  a->K: island_changed, since the island is around the casino, use transport livekit
 #+end_src
 
 #+RESULTS:
