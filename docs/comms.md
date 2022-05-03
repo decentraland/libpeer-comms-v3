@@ -17,13 +17,13 @@
 
 # Overview
 
-The idea of this new version of comms is to leverage the concept of an island as a unit, be able to define specific settings per island, and by doing so be able to deploy some high-quality services when needed, while keeping using cheaper alternatives otherwise. We call each alternative a **transport**.
+The idea of this new version of comms is to leverage the concept of an island as a unit, and be able to define specific settings per island. By doing so, we have the flexibility to deploy high-performant services when needed, while providing alternatives for extensibility or resource-optimization. We call each alternative a **transport**.
 
 We will support three types of transport for starters:
 
--   LiveKit: webRTC, high-quality but perhaps an expensive alternative.
--   WebSocket: cheaper, simpler to implement and extend.
--   Peer-to-peer: (using webRTC) not very efficient but no infrastructure costs.
+-   LiveKit: webRTC, high-quality, low latency, needs extra infrastructure to scale.
+-   WebSocket: WS, simple to implement and extend, higher latency than webRTC alternatives, needs extra infrastructure to scale.
+-   Peer-to-peer: webRTC, no extra infrastructure needed to scale, latency increases as more peers are added to an island.
 
 With regards to DCL platform alone (that is, without third-party servers), users mostly need to receive information from peers on the same island, so the transports will be in charge of broadcasting information between peers on a given island. For global messages (for example, scene messages), we will use the BFF.
 
@@ -43,7 +43,7 @@ For global messages (that is, messages across an island, for example, scene mess
 
 # LiveKit Transport
 
-[LiveKit](https://livekit.io/) is a high-quality media server using webRTC, it may be expensive to deploy (especially for a large number of peers) but it's very efficient and very easy to deploy. LiveKit has tools for webRTC signaling, the concepts of rooms (which we will adopt as islands), and its own authentication. It also has its own TURN server, so each LiveKit deployment will have a nearby TURN server, which should minimize the cost of relay for people that cannot connect directly to the server.
+[LiveKit](https://livekit.io/) is a high-quality media server using webRTC, very efficient and very easy to deploy. LiveKit has tools for webRTC signaling, the concepts of rooms (which we will adopt as islands), and its own authentication. It also has its own TURN server, so each LiveKit deployment will have a nearby TURN server, which should minimize the cost of relay for people that cannot connect directly to the server.
 
 ![img](comms-v3-livekit.png)
 
