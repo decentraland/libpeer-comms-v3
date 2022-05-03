@@ -30,7 +30,7 @@ With regards to DCL platform alone (that is, without third-party servers), users
 # Handshake
 
 -   The BFF acts as the entry point to the comms services. Users authenticate against this service using their addresses.
--   Archipelago receives (thought the BFF) a heartbeat with the current peer position and sends `change_island` messages. This message will notify the kernel that the user has to join or change to a specific island, the message will contain a connection string that the kernel will use to connect to one of the transports defined above. This way Archipelago is in charge of telling the kernel which transport will be used.
+-   Archipelago receives (thought the BFF) a heartbeat with the current peer position and sends `island_changed` messages. This message will notify the kernel that the user has to join or change to a specific island, the message will contain a connection string that the kernel will use to connect to one of the transports defined above. This way Archipelago is in charge of telling the kernel which transport will be used.
 -   The BFF and Archipelago are connected as part of a [NATS](https://nats.io/) cluster, sending and receiving peer events.
 
 ![img](comms-v3-overview.png)
