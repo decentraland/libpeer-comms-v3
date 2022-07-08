@@ -24,3 +24,10 @@ Build only archipelago-service, but start nats, archipelago-service and explorer
 ```
 ./build.sh -b archipelago-service && ./build.sh --nats -s archipelago-service explorer-bff 
 ```
+
+# Comms Repositories
+
+- [Explorer BFF](https://github.com/decentraland/explorer-bff)
+- [Archipelago Service](https://github.com/decentraland/archipelago-service)
+- [Comms Transports](https://github.com/decentraland/comms3-transports)
+- [Kernel (comms package)](https://github.com/decentraland/kernel/tree/main/packages/shared/comms)
