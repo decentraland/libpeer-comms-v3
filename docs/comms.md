@@ -132,4 +132,5 @@ Our current idea is to connect BFF (for messages across scenes) and transports t
 -   `client-proto.island.<island_id>.peer_left` (data defined in archipelago.proto/LeftIslandMessage)
 -   `client-proto.island.<island_id>.peer_join` (data defined in archipelago.proto/JoinIslandMessage)
 -   `client.peer.<peer_id>....` message from peer, application data
+-   `service.discovery` serverName and custom status depending on the service
 
