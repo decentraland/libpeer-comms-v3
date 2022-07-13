@@ -31,7 +31,7 @@ We will support three types of transport for starters:
 -   WebSocket: WS, simple to implement and extend, higher latency than webRTC alternatives, needs extra infrastructure to scale.
 -   Peer-to-peer: webRTC, no extra infrastructure needed to scale, latency increases as more peers are added to an island.
 
-With regards to DCL platform alone (that is, without third-party servers), users mostly need to receive information from peers on the same island, so the transports will be in charge of broadcasting information between peers on a given island. For global messages (for example, scene messages), we will use the BFF.
+With regards to DCL platform alone (that is, without third-party servers), users mostly need to receive information from peers on the same island, so the transports will be in charge of broadcasting information between peers on a given island. For global messages (for example, scene messages), we will use the BFF (See https://github.com/decentraland/sdk/issues/180 and [ADR-70: New comms](https://github.com/decentraland/adr/blob/main/docs/ADR-70-new-comms.md) for more information about the BFF).
 
 
 <a id="org6e5c509"></a>
